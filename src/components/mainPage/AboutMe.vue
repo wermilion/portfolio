@@ -7,7 +7,8 @@
         >
         <div class="about-text-content">
             <h2>{{ aboutBlock.title }}</h2>
-            <p class="about-desc">{{ aboutBlock.description }}</p>
+            <p class="about-desc" v-html="aboutBlock.description"></p>
+            <a class="about-more" href="/about">Узнать подробнее...</a>
         </div>
     </div>
 </template>
@@ -17,7 +18,7 @@ import {reactive} from 'vue'
 
 const aboutBlock = reactive({
     title: 'Обо мне',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce varius faucibus massa sollicitudin amet augue. Nibh metus a semper purus mauris duis.Lorem eu neque, tristique quis duis. Nibh scelerisque ac adipiscing velit non nulla in amet pellentesque.Sit turpis pretium eget maecenas. Vestibulum dolor mattis consectetur eget commodo vitae. Amet pellentesque sit pulvinar lorem mi a, euismod risus r.',
+    description: 'Привет, меня зовут Анна! С 2008 года являюсь преподавателем IT в Томском экономико-промышленном колледже, а также экспертом по компетенции «Автоматизация бизнес-процессов организаций».<br><br>Имею опыт программирования в 1С, Visual Studio, MySQL, phpMyAdmin, работала с различными системами учета, взаимодействовала с контролирующими и проверяющими органами.',
     img: 'images/about/students.jpg'
 })
 </script>
@@ -32,6 +33,7 @@ const aboutBlock = reactive({
     &-img {
         max-width: 46.5%;
         width: 100%;
+        border-radius: 10px;
     }
     
     &-text-content {
@@ -44,6 +46,12 @@ const aboutBlock = reactive({
 
     &-desc {
         color: $dark-primary-secondary;
+    }
+
+    &-more {
+        text-decoration: none;
+        font-weight: 700;
+        color: $primary;
     }
 }
 </style>

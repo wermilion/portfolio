@@ -2,11 +2,13 @@
   <BaseHeader />
   <router-view/>
   <BaseFooter />
+  <UIModal />
 </template>
 
 <script setup>
 import BaseHeader from '@/components/base/Header/BaseHeader.vue'
 import BaseFooter from '@/components/base/Footer/BaseFooter.vue'
+import UIModal from '@/components/ui/Modal/UIModal.vue'
 </script>
 
 <style lang="scss">

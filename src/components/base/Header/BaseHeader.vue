@@ -23,19 +23,22 @@
 import UIButton from '@/components/ui/Button/UIButton.vue';
 
 const navLinks = [
-    { path: "#", label: "Home" },
-    { path: "#", label: "Portfolio" },
-    { path: "#", label: "About me" },
-    { path: "#", label: "Testimonials" }
+    { path: "/", label: "Главная" },
+    { path: "/portfolio", label: "Портфолио" },
+    { path: "/about", label: "Обо мне" },
 ]
 </script>
 
 <style scoped lang="scss">
 .header {
+    position: sticky;
+    top: 0;
     width: 100%;
     padding: 25px 0;
-    z-index: 1000;
-
+    background-color: white;
+    box-shadow: 0px 5.333px 80px 0px rgba(0, 0, 0, 0.10);
+    z-index: 999;
+    
     &-items {
         display: flex;
         justify-content: space-between;
@@ -51,7 +54,7 @@ const navLinks = [
             padding: 18px 0;
             color: $dark-primary-secondary;
             text-decoration: none;
-            transition: all .3s ease-out;
+            transition: all .3s;
 
             &:hover {
                 color: $primary;

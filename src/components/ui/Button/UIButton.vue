@@ -25,7 +25,7 @@ button {
     background-color: $primary; 
     color: white;
     cursor: pointer;
-    transition: all .3s ease-out;
+    transition: all .3s;
 
     &:hover {
         background-color: white; 

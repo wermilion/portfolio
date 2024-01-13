@@ -17,7 +17,7 @@
                     :key="index"
                     :href="item.path"
                 >
-                    <img :src="item.src" :alt="item.alt">
+                    <img :src="'/images/socials/' + item.src" :alt="item.alt">
                 </a>
             </div>
         </div>
@@ -27,18 +27,14 @@
 <script setup>
 
 const footerLinks = [
-    { path: "#", label: "Home" },
-    { path: "#", label: "Portfolio" },
-    { path: "#", label: "About me" },
-    { path: "#", label: "Contact" },
-    { path: "#", label: "Testimonials" },
+    { path: "/", label: "Главная" },
+    { path: "/portfolio", label: "Портфолио" },
+    { path: "/about", label: "Обо мне" },
+    { path: "#", label: "Связаться со мной" },
 ]
 
 const socialNetworks = [
-    {src: "/images/socials/facebook.svg", path: "#", alt: "Facebook"},
-    {src: "/images/socials/inst.svg", path: "#", alt: "Inst"},
-    {src: "/images/socials/twitter.svg", path: "#", alt: "Twitter"},
-    {src: "/images/socials/linkedin.svg", path: "#", alt: "Linkedin"},
+    {src: "vk.svg", path: "https://vk.com/anna_fedorova83", alt: "vk"},
 ]
 </script>
 
@@ -64,7 +60,7 @@ const socialNetworks = [
         padding: 18px 0;
         color: $dark-primary-secondary;
         text-decoration: none;
-        transition: all .3s ease-out;
+        transition: all .3s;
 
         &:hover {
             color: $primary;

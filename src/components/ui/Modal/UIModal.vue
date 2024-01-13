@@ -1,8 +1,14 @@
 <template>
-    <div class="modal-overlay">
+    <div class="modal">
+        <div class="modal-overlay" @click="closeModal"></div>
         <div class="modal-container">
             <h2>Связаться со мной</h2>
             <p>Если есть вопросы - заполните форму, и я обязательно отвечу!</p>
+            <button class="close-modal" @click="closeModal">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12.0003 10.5868L7.04996 5.63647L5.63574 7.05069L10.5861 12.001L5.63695 16.9502L7.05116 18.3644L12.0003 13.4153L16.9495 18.3644L18.3637 16.9502L13.4145 12.001L18.3649 7.05069L16.9507 5.63647L12.0003 10.5868Z" fill="white"/>
+                </svg>
+            </button>
             <form @submit.prevent.stop="postData()">
                 <template
                     v-for="(item, index) in formData"
@@ -29,11 +35,14 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, defineEmits } from 'vue'
 import { inputValidation, postFormData } from "../../../utils/form";
 import UIInput from "../Inputs/Input/UIInput";
 import UITextarea from "../Inputs/Textarea/UITextarea";
 import UIButton from "../Button/UIButton";
+
+// eslint-disable-next-line
+const emit = defineEmits(['closeModal'])
 
 const formData = reactive([
     {
@@ -71,6 +80,9 @@ function input(data) {
 function postData() {
     postFormData(formData)
 }
+const closeModal = () => {
+    emit('closeModal')
+}
 </script>
 
 <style scoped lang="scss">
@@ -98,6 +110,25 @@ function postData() {
         padding: 30px 60px;
         background-color: white;
         border-radius: 20px;
+        z-index: 1001;
+
+        button.close-modal {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+
+            svg {
+                width: 32px;
+                height: 32px;
+
+                path {
+                    fill: $dark-primary-secondary;
+                }
+            }
+        }
 
         form {
             display: flex;

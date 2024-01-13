@@ -2,13 +2,25 @@
   <BaseHeader/>
   <router-view/>
   <BaseFooter/>
-  <UIModal/>
+  <UIModal
+      v-show="store.state.MainData.modalIsVisible"
+      :isVisible="store.state.MainData.modalIsVisible"
+      @closeModal="changeVisibility"
+  />
 </template>
 
 <script setup>
+import { useStore } from 'vuex';
+
 import BaseHeader from '@/components/base/Header/BaseHeader.vue';
 import BaseFooter from '@/components/base/Footer/BaseFooter.vue';
 import UIModal from '@/components/ui/Modal/UIModal.vue';
+
+const store = useStore();
+
+const changeVisibility = () => {
+    store.commit('MainData/changeModalVisibility')
+}
 </script>
 
 <style lang="scss">

@@ -8,7 +8,17 @@
                     :href="item.path"
                     class="footer-link"
                 >
-                    {{ item.label }}
+                    <span
+                        v-if="item.id === 'contact-with-me'"
+                        @click="changeVisibility"
+                    >
+                        {{ item.label }}
+                    </span>
+                    <span
+                        v-else
+                    >
+                        {{ item.label }}
+                    </span>
                 </a>
             </div>
             <div class="footer-socials">
@@ -25,17 +35,24 @@
 </template>
 
 <script setup>
+import {useStore} from "vuex";
 
 const footerLinks = [
-    { path: "/", label: "Главная" },
-    { path: "/portfolio", label: "Портфолио" },
-    { path: "/about", label: "Обо мне" },
-    { path: "#", label: "Связаться со мной" },
+    { path: "/", label: "Главная", id: "home" },
+    { path: "/portfolio", label: "Портфолио", id: "portfolio" },
+    { path: "/about", label: "Обо мне", id: "about-me" },
+    { path: "#", label: "Связаться со мной", id: "contact-with-me" },
 ]
 
 const socialNetworks = [
     {src: "vk.svg", path: "https://vk.com/anna_fedorova83", alt: "vk"},
 ]
+
+const store = useStore();
+
+const changeVisibility = () => {
+    store.commit('MainData/changeModalVisibility')
+}
 </script>
 
 <style scoped lang="scss">

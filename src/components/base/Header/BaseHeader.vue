@@ -2,7 +2,7 @@
     <header class="header">
         <div class="container header-items">
             <nav class="nav">
-                <a 
+                <a
                     v-for="(item, index) in navLinks"
                     :key="index"
                     :href="item.path"
@@ -11,15 +11,17 @@
                     {{ item.label }}
                 </a>
             </nav>
-            <UIButton 
+            <UIButton
                 label="Связаться со мной"
                 class="ghost"
+                @click="changeVisibility"
             />
         </div>
     </header>
 </template>
 
 <script setup>
+import { useStore } from 'vuex';
 import UIButton from '@/components/ui/Button/UIButton.vue';
 
 const navLinks = [
@@ -27,6 +29,11 @@ const navLinks = [
     { path: "/portfolio", label: "Портфолио" },
     { path: "/about", label: "Обо мне" },
 ]
+const store = useStore();
+
+const changeVisibility = () => {
+    store.commit('MainData/changeModalVisibility')
+}
 </script>
 
 <style scoped lang="scss">
@@ -38,7 +45,7 @@ const navLinks = [
     background-color: white;
     box-shadow: 0px 5.333px 80px 0px rgba(0, 0, 0, 0.10);
     z-index: 999;
-    
+
     &-items {
         display: flex;
         justify-content: space-between;
@@ -48,8 +55,8 @@ const navLinks = [
     .nav {
         display: flex;
         gap: 42px;
-    
-        
+
+
         &-item {
             padding: 18px 0;
             color: $dark-primary-secondary;

@@ -9,12 +9,12 @@
                 </h1>
                 <p>{{ mainInfo.description }}</p>
             </div>
-            <UIButton :label="mainInfo.buttonText"/>
+            <UIButton :label="mainInfo.buttonText" @click="changeVisibility"/>
         </div>
-    
-        <img 
-            class="main-info__img" 
-            :src="mainInfo.img" 
+
+        <img
+            class="main-info__img"
+            :src="mainInfo.img"
             alt="My photo"
         />
         </div>
@@ -22,8 +22,8 @@
 </template>
 
 <script setup>
+import { useStore } from 'vuex';
 import {reactive} from 'vue';
-
 import UIButton from '@/components/ui/Button/UIButton.vue';
 
 const mainInfo = reactive({
@@ -35,6 +35,12 @@ const mainInfo = reactive({
     buttonText: 'Связаться со мной',
     img: 'images/mainInfo/main-info-img.png'
 })
+
+const store = useStore();
+
+const changeVisibility = () => {
+    store.commit('MainData/changeModalVisibility')
+}
 </script>
 
 <style scoped lang="scss">

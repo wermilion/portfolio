@@ -3,8 +3,8 @@
   <router-view/>
   <BaseFooter/>
   <UIModal
-      v-show="store.state.MainData.modalIsVisible"
-      :isVisible="store.state.MainData.modalIsVisible"
+      v-show="store.state.MainData.modal.IsVisible"
+      :isVisible="store.state.MainData.modal.IsVisible"
       @closeModal="changeVisibility"
   />
 </template>

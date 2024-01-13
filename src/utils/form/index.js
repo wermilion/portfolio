@@ -10,7 +10,6 @@ export function inputValidation(data, formData) {
       if (data.value.length < 2) {
         formObj.error = 'Поле является обязательным для заполнения'
       } else {
-        console.log(formObj.id)
         if (formObj.id === 'email') {
           if (data.value.includes('@')) {
             const emailArr = data.value.split('@')[1]
@@ -64,6 +63,11 @@ export function postFormData(formData) {
         return obj
       }, {});
 
-    console.log(data)
+    formData.forEach((el) => {
+      el.value = ''
+      el.error = ''
+    })
+
+    return data
   }
 }

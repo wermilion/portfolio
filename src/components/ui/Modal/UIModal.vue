@@ -37,12 +37,14 @@
 <script setup>
 import { reactive, defineEmits } from 'vue'
 import { inputValidation, postFormData } from "../../../utils/form";
+import {useStore} from "vuex";
 import UIInput from "../Inputs/Input/UIInput";
 import UITextarea from "../Inputs/Textarea/UITextarea";
 import UIButton from "../Button/UIButton";
 
 // eslint-disable-next-line
 const emit = defineEmits(['closeModal'])
+const store = useStore();
 
 const formData = reactive([
     {
@@ -78,7 +80,10 @@ function input(data) {
     inputValidation(data, formData)
 }
 function postData() {
-    postFormData(formData)
+    const data = postFormData(formData)
+    if (data) {
+        store.dispatch('MainData/postApplications', data)
+    }
 }
 const closeModal = () => {
     emit('closeModal')

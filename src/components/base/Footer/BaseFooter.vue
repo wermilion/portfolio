@@ -14,9 +14,7 @@
                     >
                         {{ item.label }}
                     </span>
-                    <span
-                        v-else
-                    >
+                    <span v-else>
                         {{ item.label }}
                     </span>
                 </a>

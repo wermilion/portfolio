@@ -43,7 +43,7 @@ const changeVisibility = () => {
     width: 100%;
     padding: 25px 0;
     background-color: white;
-    box-shadow: 0px 5.333px 80px 0px rgba(0, 0, 0, 0.10);
+    box-shadow: 0 5px 80px 0 rgba(0, 0, 0, 0.10);
     z-index: 999;
 
     &-items {

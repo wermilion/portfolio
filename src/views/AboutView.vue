@@ -5,3 +5,9 @@
 </template>
 
 <script setup></script>
+
+<style scoped lang="scss">
+div {
+  height: calc(100vh - 120px);
+}
+</style>

@@ -1,8 +1,8 @@
 <template>
-  <BaseHeader />
+  <BaseHeader/>
   <router-view/>
-  <BaseFooter />
-  <UIModal />
+  <BaseFooter/>
+  <UIModal/>
 </template>
 
 <script setup>

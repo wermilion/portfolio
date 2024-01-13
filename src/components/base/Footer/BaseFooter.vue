@@ -17,7 +17,7 @@
                     :key="index"
                     :href="item.path"
                 >
-                    <img :src="'/images/socials/' + item.src" :alt="item.alt">
+                    <img style="width: 32px; height: 32px;" :src="'/images/socials/' + item.src" :alt="item.alt">
                 </a>
             </div>
         </div>

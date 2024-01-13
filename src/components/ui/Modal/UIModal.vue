@@ -1,22 +1,28 @@
 <template>
     <div class="modal-overlay">
         <div class="modal-container">
-            <h2>Contact me</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <form>
+            <h2>Связаться со мной</h2>
+            <p>Если есть вопросы - заполните форму, и я обязательно отвечу!</p>
+            <form @submit.prevent.stop="postData()">
                 <template
                     v-for="(item, index) in formData"
                     :key="index"
                 >
-                    <UIInput 
+                    <UIInput
                         v-if="item.type === 'input'"
                         :input="item"
+                        @change="input"
                     />
-                    <UITextarea 
+                    <UITextarea
                         v-else
                         :textarea="item"
+                        @change="input"
                     />
                 </template>
+                <UIButton
+                    type="submit"
+                    label="Отправить"
+                />
             </form>
         </div>
     </div>
@@ -24,9 +30,10 @@
 
 <script setup>
 import { reactive } from 'vue'
-
-import { UIInput } from "@/components/ui/Inputs/Input/UIInput.vue";
-import { UITextarea } from "@/components/ui/Inputs/Textarea/UITextarea.vue";
+import { inputValidation, postFormData } from "../../../utils/form";
+import UIInput from "../Inputs/Input/UIInput";
+import UITextarea from "../Inputs/Textarea/UITextarea";
+import UIButton from "../Button/UIButton";
 
 const formData = reactive([
     {
@@ -57,6 +64,13 @@ const formData = reactive([
         required: true
     }
 ])
+
+function input(data) {
+    inputValidation(data, formData)
+}
+function postData() {
+    postFormData(formData)
+}
 </script>
 
 <style scoped lang="scss">
@@ -81,10 +95,31 @@ const formData = reactive([
         flex-direction: column;
         gap: 20px;
         width: 840px;
-        height: 800px;
-        padding: 30px;
+        padding: 30px 60px;
         background-color: white;
         border-radius: 20px;
+
+        form {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            width: 100%;
+            gap: 20px 0;
+
+            .input-box {
+                width: 45%;
+            }
+
+            .textarea-box {
+                width: 100%;
+                height: 200px;
+            }
+
+            button {
+                width: 100%;
+                margin-top: 16px;
+            }
+        }
     }
 }
 </style>

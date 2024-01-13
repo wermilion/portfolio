@@ -9,7 +9,7 @@
                 class="achieve-list-item item"
             >
                 <div class="item-img__wrapper">
-                    <img 
+                    <img style="fill: green;"
                         :src="'images/myAchievements/' + item.src" 
                         :alt="item.title"
                     >
@@ -23,10 +23,10 @@
 
 <script setup>
 const items = [
-    {path: '#', src: 'chain.svg', title: 'Дипломы', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.'},
-    {path: '#', src: 'label.svg', title: 'Сертификаты', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.'},
+    {path: '#', src: 'diplom.svg', title: 'Дипломы', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.'},
+    {path: '#', src: 'certificate.svg', title: 'Сертификаты', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.'},
     {path: '#', src: 'pen.svg', title: 'Повышение квалификации', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.'},
-    {path: '#', src: 'tag.svg', title: 'Благодарности', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.'},
+    {path: '#', src: 'appreciation.svg', title: 'Благодарности', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.'},
 ]
 </script>
 

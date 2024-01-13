@@ -18,7 +18,7 @@ import {reactive} from 'vue'
 const aboutBlock = reactive({
     title: 'Обо мне',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce varius faucibus massa sollicitudin amet augue. Nibh metus a semper purus mauris duis.Lorem eu neque, tristique quis duis. Nibh scelerisque ac adipiscing velit non nulla in amet pellentesque.Sit turpis pretium eget maecenas. Vestibulum dolor mattis consectetur eget commodo vitae. Amet pellentesque sit pulvinar lorem mi a, euismod risus r.',
-    img: 'images/temp/about_me.png'
+    img: 'images/about/students.jpg'
 })
 </script>
 

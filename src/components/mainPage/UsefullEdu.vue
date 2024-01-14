@@ -44,7 +44,6 @@
                             </svg>
                         </a>
                     </div>
-
                 </div>
             </article>
         </section>

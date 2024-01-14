@@ -8,7 +8,12 @@
         <div class="about-text-content">
             <h2>{{ aboutBlock.title }}</h2>
             <p class="about-desc" v-html="aboutBlock.description"></p>
-            <a class="about-more" href="/about">Узнать подробнее...</a>
+            <router-link
+                class="about-more"
+                to="/about"
+            >
+                Узнать подробнее...
+            </router-link>
         </div>
     </div>
 </template>

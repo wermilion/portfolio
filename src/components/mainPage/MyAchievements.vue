@@ -2,31 +2,31 @@
     <div class="achieve container">
         <h2>Мои достижения</h2>
         <section class="achieve-list">
-            <a
+            <router-link
                 v-for="(item, index) in items"
                 :key="index"
-                :href="item.path"
+                :to="item.path"
                 class="achieve-list-item item"
             >
                 <div class="item-img__wrapper">
                     <img style="fill: green;"
-                        :src="'images/myAchievements/' + item.src" 
+                        :src="'images/myAchievements/' + item.src"
                         :alt="item.title"
                     >
                 </div>
                 <h3 class="item-title">{{ item.title }}</h3>
                 <p class="item-desc">{{ item.text }}</p>
-            </a>
+            </router-link>
         </section>
     </div>
 </template>
 
 <script setup>
 const items = [
-    {path: '#', src: 'diplom.svg', title: 'Дипломы', text: 'Индивидуальные достижения студентов в региональных чемпионатах, олимпиадах и конкурсах.'},
-    {path: '#', src: 'certificate.svg', title: 'Сертификаты', text: 'Участие студентов в региональных чемпионатах, олимпиадах и конкурсах.'},
-    {path: '#', src: 'pen.svg', title: 'Повышение квалификации', text: 'Обновление теоретических и практических знаний, совершенствование навыков специалиста.'},
-    {path: '#', src: 'appreciation.svg', title: 'Благодарности', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.'},
+    {path: '/', src: 'diplom.svg', title: 'Дипломы', text: 'Индивидуальные достижения студентов в региональных чемпионатах, олимпиадах и конкурсах.'},
+    {path: '/', src: 'certificate.svg', title: 'Сертификаты', text: 'Участие студентов в региональных чемпионатах, олимпиадах и конкурсах.'},
+    {path: '/', src: 'pen.svg', title: 'Повышение квалификации', text: 'Обновление теоретических и практических знаний, совершенствование навыков специалиста.'},
+    {path: '/', src: 'appreciation.svg', title: 'Благодарности', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.'},
 ]
 </script>
 

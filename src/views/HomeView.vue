@@ -3,6 +3,7 @@
     <MainInfo />
     <MyAchievements />
     <AboutMe />
+    <UsefullEdu />
   </div>
 </template>
 
@@ -10,4 +11,5 @@
 import MainInfo from'@/components/mainPage/MainInfo.vue';
 import MyAchievements from '@/components/mainPage/MyAchievements.vue';
 import AboutMe from '@/components/mainPage/AboutMe.vue';
+import UsefullEdu from '@/components/mainPage/UsefullEdu.vue';
 </script>

@@ -1,37 +1,49 @@
 <template>
     <div class="sidebar">
-        <!-- <a
-            v-for="(item, index) in data"
-            :key="index"
-            :href="item.path"
-            class="side-item"
+        <span
+                v-for="(item, index) in data"
+                :key="index"
+                @click="item.method"
         >
             {{ item.name }}
-        </a> -->
+        </span>
     </div>
 </template>
 
 <script setup>
-// const data = [
-//     {name: 'Дипломы', path: '#diploms'},
-//     {name: 'Сертификаты', path: '#certificates'},
-//     {name: 'Повышение квалификации', path: '#qualification'},
-//     {name: 'Благодарности', path: '#appreciations'},
-// ]
+const data = [
+    {name: 'Дипломы', method: 'showDiplomas'},
+    {name: 'Сертификаты', method: 'showCertificates'},
+    {name: 'Повышение квалификации', method: 'showQualification'},
+    {name: 'Благодарности', method: 'showAppreciations'},
+]
 </script>
 
 <style scoped lang="scss">
 .sidebar {
+  position: fixed;
+  left: 0;
+  width: 250px;
+  padding: 15px;
+  gap: 10px;
+
+  background-color: #eee;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+
+  span {
+    text-decoration: none;
     color: #000;
-    background-color: #eee;
+    padding: 10px;
+  }
 
-    float: left;
-    left: 0;
-    padding: 15px;
-
-    transition: 0.3s ease;
-
-    display: flex;
-    flex-direction: column;
+  span:hover {
+    background-color: $primary;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+  }
 }
 </style>

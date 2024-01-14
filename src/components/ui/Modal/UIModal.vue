@@ -121,9 +121,16 @@ const closeModal = () => {
             position: absolute;
             right: 20px;
             top: 20px;
+            width: 32px;
+            height: 32px;
             background-color: transparent;
             border: none;
             cursor: pointer;
+            transition: .6s all;
+
+            &:hover {
+                transform: rotate(180deg);
+            }
 
             svg {
                 width: 32px;

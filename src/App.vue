@@ -1,12 +1,18 @@
 <template>
-  <BaseHeader/>
-  <router-view/>
-  <BaseFooter/>
-  <UIModal
-      v-show="store.state.MainData.modal.IsVisible"
-      :isVisible="store.state.MainData.modal.IsVisible"
-      @closeModal="changeVisibility"
-  />
+    <BaseHeader/>
+    <router-view v-slot="{ Component }">
+        <transition name="page-opacity" mode="out-in">
+            <component :is="Component"/>
+        </transition>
+    </router-view>
+    <BaseFooter/>
+    <transition name="fadeChange">
+        <UIModal
+            v-show="store.state.MainData.modal.IsVisible"
+            :isVisible="store.state.MainData.modal.IsVisible"
+            @closeModal="changeVisibility"
+        />
+    </transition>
 </template>
 
 <script setup>

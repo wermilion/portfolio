@@ -12,11 +12,13 @@
             <UIButton :label="mainInfo.buttonText" @click="changeVisibility"/>
         </div>
 
-        <img
-            class="main-info__img"
-            :src="mainInfo.img"
-            alt="My photo"
-        />
+        <div class="main-info__img-wrapper">
+            <img
+                class="main-info__img"
+                :src="mainInfo.img"
+                alt="My photo"
+            />
+        </div>
         </div>
     </div>
 </template>
@@ -33,7 +35,7 @@ const mainInfo = reactive({
     },
     description: 'Преподаватель Томского экономико-промышленного колледжа, кафедра IT-технологий.',
     buttonText: 'Связаться со мной',
-    img: 'images/mainInfo/main-info-img.png'
+    img: 'images/mainInfo/main-info.jpg'
 })
 
 const store = useStore();
@@ -50,7 +52,7 @@ const changeVisibility = () => {
     .container {
         display: flex;
         align-items: center;
-        padding: 135px 15px;
+        padding: 80px 15px;
     }
 
     &__content {
@@ -84,8 +86,21 @@ const changeVisibility = () => {
     }
 
     &__img {
-        max-width: 51%;
         width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+
+        &-wrapper {
+            position: relative;
+            max-width: 51%;
+            width: 100%;
+            height: 730px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
     }
 }
 </style>

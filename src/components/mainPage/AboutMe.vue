@@ -1,8 +1,8 @@
 <template>
     <div class="about container">
-        <img 
-            class="about-img" 
-            :src="aboutBlock.img" 
+        <img
+            class="about-img"
+            :src="aboutBlock.img"
             :alt="aboutBlock.title"
         >
         <div class="about-text-content">
@@ -35,7 +35,7 @@ const aboutBlock = reactive({
         width: 100%;
         border-radius: 10px;
     }
-    
+
     &-text-content {
         display: flex;
         flex-direction: column;
@@ -51,7 +51,12 @@ const aboutBlock = reactive({
     &-more {
         text-decoration: none;
         font-weight: 700;
-        color: $primary;
+        color: $dark-primary-secondary;
+        transition: color .3s;
+
+        &:hover {
+            color: $primary;
+        }
     }
 }
 </style>

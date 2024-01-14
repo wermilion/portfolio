@@ -2,14 +2,14 @@
     <header class="header">
         <div class="container header-items">
             <nav class="nav">
-                <a
+                <router-link
                     v-for="(item, index) in navLinks"
                     :key="index"
-                    :href="item.path"
-                    class="nav-item"
+                    :to="item.path"
+                    :class="['nav-item', {'_active' : item.isActive}]"
                 >
                     {{ item.label }}
-                </a>
+                </router-link>
             </nav>
             <UIButton
                 label="Связаться со мной"
@@ -22,18 +22,35 @@
 
 <script setup>
 import { useStore } from 'vuex';
+import { useRoute } from 'vue-router'
+import {onMounted, ref, watch} from 'vue';
 import UIButton from '@/components/ui/Button/UIButton.vue';
 
-const navLinks = [
-    { path: "/", label: "Главная" },
-    { path: "/portfolio", label: "Портфолио" },
-    { path: "/about", label: "Обо мне" },
-]
+const navLinks = ref([
+    { path: "/", label: "Главная", isActive: false },
+    { path: "/portfolio", label: "Портфолио", isActive: false },
+    { path: "/about", label: "Обо мне", isActive: false },
+])
 const store = useStore();
+const route = useRoute();
 
 const changeVisibility = () => {
     store.commit('MainData/changeModalVisibility')
 }
+
+// Выполняется при монтировании компонента
+onMounted(() => {
+    navLinks.value.forEach((el) => {
+        el.isActive = el.path === route.path;
+    })
+});
+
+// Следим за изменениями маршрута
+watch(route, (to) => {
+    navLinks.value.forEach((el) => {
+        el.isActive = el.path === to.path;
+    })
+});
 </script>
 
 <style scoped lang="scss">
@@ -64,6 +81,10 @@ const changeVisibility = () => {
             transition: all .3s;
 
             &:hover {
+                color: $primary;
+            }
+
+            &._active {
                 color: $primary;
             }
         }

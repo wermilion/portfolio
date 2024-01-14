@@ -26,7 +26,7 @@ const items = [
     {path: '/', src: 'diplom.svg', title: 'Дипломы', text: 'Индивидуальные достижения студентов в региональных чемпионатах, олимпиадах и конкурсах.'},
     {path: '/', src: 'certificate.svg', title: 'Сертификаты', text: 'Участие студентов в региональных чемпионатах, олимпиадах и конкурсах.'},
     {path: '/', src: 'pen.svg', title: 'Повышение квалификации', text: 'Обновление теоретических и практических знаний, совершенствование навыков специалиста.'},
-    {path: '/', src: 'appreciation.svg', title: 'Благодарности', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.'},
+    {path: '/', src: 'appreciation.svg', title: 'Благодарности', text: 'Благодарственные письма за подготовку победителей, участие в жюри, участие в региональных чемпионатах в качестве эксперта.'},
 ]
 </script>
 

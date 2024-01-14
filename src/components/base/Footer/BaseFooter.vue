@@ -79,6 +79,7 @@ watch(route, (to) => {
     width: 100%;
     padding: 30px 0;
     background-color: $base-light;
+    z-index: 20;
 
     .container {
         display: flex;

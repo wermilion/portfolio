@@ -1,8 +1,9 @@
 <template>
     <div class="container usefull-edu">
         <div class="usefull-edu__header">
-            <h2>Полезное образование</h2>
-            <p>„Образование - это наш паспорт в будущее, потому что завтра принадлежит тем, кто готовится к нему сегодня.“ — Малкольм Икс</p>
+            <h2>Образовательные платформы</h2>
+            <p>„<span>Образование</span> - это наш паспорт в будущее, потому что завтра принадлежит тем, кто готовится к нему сегодня.“</p>
+            <span style="text-align: end; font-style: italic;">Малкольм Икс</span>
         </div>
         <section class="usefull-edu__courses">
             <article
@@ -83,8 +84,27 @@ const courses = [
     &__header {
         display: flex;
         flex-direction: column;
+        max-width: 53%;
         gap: 20px;
         margin-bottom: 70px;
+
+        h2 {
+            margin-bottom: 30px;
+        }
+
+        p {
+            width: max-content;
+            padding: 15px;
+            border-top: 2px solid $primary;
+            border-bottom: 2px solid $primary;
+            border-radius: 2px;
+        }
+
+        p span {
+            color: $dark-primary-secondary;
+            font-weight: 700;
+            font-style: italic;
+        }
     }
 
     &__courses {

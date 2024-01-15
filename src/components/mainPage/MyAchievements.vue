@@ -2,32 +2,62 @@
     <div class="achieve container">
         <h2>Мои достижения</h2>
         <section class="achieve-list">
-            <router-link
+            <article
                 v-for="(item, index) in items"
                 :key="index"
-                :to="item.path"
+                @click="goToPortfolio(item.id)"
                 class="achieve-list-item item"
             >
                 <div class="item-img__wrapper">
                     <img style="fill: green;"
-                        :src="'images/myAchievements/' + item.src"
-                        :alt="item.title"
+                         :src="'images/myAchievements/' + item.src"
+                         :alt="item.title"
                     >
                 </div>
                 <h3 class="item-title">{{ item.title }}</h3>
                 <p class="item-desc">{{ item.text }}</p>
-            </router-link>
+            </article>
         </section>
     </div>
 </template>
 
 <script setup>
+import router from "../../router";
+import {useStore} from "vuex";
+
+const store = useStore()
+
 const items = [
-    {path: '/', src: 'diplom.svg', title: 'Дипломы', text: 'Индивидуальные достижения студентов в региональных чемпионатах, олимпиадах и конкурсах.'},
-    {path: '/', src: 'certificate.svg', title: 'Сертификаты', text: 'Участие студентов в региональных чемпионатах, олимпиадах и конкурсах.'},
-    {path: '/', src: 'pen.svg', title: 'Повышение квалификации', text: 'Обновление теоретических и практических знаний, совершенствование навыков специалиста.'},
-    {path: '/', src: 'appreciation.svg', title: 'Благодарности', text: 'Благодарственные письма за подготовку победителей, участие в жюри, участие в региональных чемпионатах в качестве эксперта.'},
+    {
+        id: 'diplomas',
+        src: 'diplom.svg',
+        title: 'Дипломы',
+        text: 'Индивидуальные достижения студентов в региональных чемпионатах, олимпиадах и конкурсах.'
+    },
+    {
+        id: 'certificates',
+        src: 'certificate.svg',
+        title: 'Сертификаты',
+        text: 'Участие студентов в региональных чемпионатах, олимпиадах и конкурсах.'
+    },
+    {
+        id: 'qualifications',
+        src: 'pen.svg',
+        title: 'Повышение квалификации',
+        text: 'Обновление теоретических и практических знаний, совершенствование навыков специалиста.'
+    },
+    {
+        id: 'appreciations',
+        src: 'appreciation.svg',
+        title: 'Благодарности',
+        text: 'Благодарственные письма за подготовку победителей, участие в жюри, участие в региональных чемпионатах в качестве эксперта.'
+    },
 ]
+
+const goToPortfolio = (id) => {
+    store.commit('portfolio/changeActiveChapter', (id))
+    router.push('/portfolio')
+}
 </script>
 
 <style lang="scss">
@@ -54,6 +84,7 @@ const items = [
             text-decoration: none;
             word-break: break-all;
             transition: all .3s;
+            cursor: pointer;
 
             &:hover {
                 border-color: $primary;

@@ -11,6 +11,9 @@ const mainData = {
     bot: {
       token: '6818919536:AAFipsVhoWRiBUHnZxi91-e-1lV8Mm_ekTM',
       chatId: '-1002122463156'
+    },
+    portfolio: {
+      activeChapter: 'diplomas'
     }
   },
   mutations: {

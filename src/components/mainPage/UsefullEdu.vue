@@ -84,7 +84,7 @@ const courses = [
     &__header {
         display: flex;
         flex-direction: column;
-        max-width: 53%;
+        max-width: 100%;
         gap: 20px;
         margin-bottom: 70px;
 
@@ -93,7 +93,7 @@ const courses = [
         }
 
         p {
-            width: max-content;
+            width: 100%;
             padding: 15px;
             border-top: 2px solid $primary;
             border-bottom: 2px solid $primary;

@@ -1,24 +1,20 @@
 <template>
     <aside class="sidebar">
-        <button
-            v-for="(item, index) in chapters"
-            :key="index"
-            :class="{'_active' : item.id === currentChapter}"
-            @click="changeChapter(item.id)"
-        >
+        <button v-for="(item, index) in chapters" :key="index" :class="{ '_active': item.id === currentChapter }"
+            @click="changeChapter(item.id)">
             {{ item.name }}
         </button>
     </aside>
 </template>
 
 <script setup>
-import {defineEmits, defineProps} from "vue";
+import { defineEmits, defineProps } from "vue";
 
 // eslint-disable-next-line
 const props = defineProps({
     chapters: {
         type: Object,
-        default: () => {}
+        default: () => { }
     },
     currentChapter: {
         type: String,
@@ -39,13 +35,12 @@ const changeChapter = (id) => emit('changeChapter', id)
     width: 250px;
     padding: 15px;
     gap: 10px;
-    background-color: #eee;
-    border-radius: 10px;
 
     button {
-        padding: 10px;
-        border: none;
-        border-radius: 10px;
+        padding: 20px;
+        border: 1px solid $primary;
+        background-color: white;
+        border-radius: 25px;
         text-decoration: none;
         color: #000;
         transition: .3s ease;
@@ -55,6 +50,7 @@ const changeChapter = (id) => emit('changeChapter', id)
         &._active,
         &:hover {
             background-color: $primary;
+            border-color: $primary;
             color: #fff;
         }
     }

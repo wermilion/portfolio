@@ -85,12 +85,23 @@ watch(route, (to) => {
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        @include _700 {
+            flex-direction: column;
+            align-items: start;
+
+        }
     }
 
     &-links {
         display: flex;
         align-items: center;
-        gap: 40px;
+        gap: 20px;
+
+        @include _700 {
+            flex-direction: column;
+            gap: 0px;
+        }
     }
 
     &-link {
@@ -103,12 +114,25 @@ watch(route, (to) => {
         &:hover {
             color: $primary;
         }
+
+        @include _700 {
+            width: 100%;
+            padding: 10px 0px;
+            border-top: 2px solid $primary;
+            border-radius: 2px;
+
+            &:last-child {
+                border-bottom: 2px solid $primary;
+                margin-bottom: 10px;
+            }
+        }
     }
 
     &-socials {
         display: flex;
         align-items: center;
         gap: 16px;
+        justify-content: center;
     }
 }
 </style>

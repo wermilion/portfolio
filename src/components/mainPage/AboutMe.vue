@@ -92,6 +92,7 @@ const aboutBlock = reactive({
 
     &-desc {
         color: $dark-primary-secondary;
+        font-size: 20px;
     }
 
     &-more {

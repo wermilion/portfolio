@@ -36,6 +36,13 @@ const changeChapter = (id) => emit('changeChapter', id)
     padding: 15px;
     gap: 10px;
 
+    @include _700 {
+        position: relative;
+        flex-direction: row;
+        justify-content: center;
+        left: 0px;
+    }
+
     button {
         padding: 20px;
         border: 1px solid $primary;
@@ -52,6 +59,11 @@ const changeChapter = (id) => emit('changeChapter', id)
             background-color: $primary;
             border-color: $primary;
             color: #fff;
+        }
+
+        @include _700 {
+            padding: 10px;
+            text-align: center;
         }
     }
 }

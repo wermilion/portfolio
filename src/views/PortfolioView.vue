@@ -102,6 +102,13 @@ const changeChapter = (id) => {
     justify-content: flex-end;
     padding: 40px 15px;
 
+    @include _700 {
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+    }
+
     &__content {
         display: flex;
         flex-direction: column;
@@ -112,6 +119,10 @@ const changeChapter = (id) => {
         gap: 15px;
         border-radius: 10px;
         background-color: #eee;
+
+        @include _700 {
+            max-width: 100%;
+        }
     }
 
     &__item:nth-child(2n) {

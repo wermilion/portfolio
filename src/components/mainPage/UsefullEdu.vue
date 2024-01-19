@@ -154,6 +154,7 @@ const courses = [
                 }
 
                 p {
+                    @include textEllipsis(4);
                     color: $dark-primary-secondary;
                     font-size: 20px;
                 }

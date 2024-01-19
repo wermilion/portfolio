@@ -67,9 +67,18 @@ const goToPortfolio = (id) => {
     padding: 150px 15px;
     gap: 110px;
 
+    @include _1300 {
+        gap: 60px;
+        padding: 50px 15px;
+    }
+
     &-list {
         display: flex;
         gap: 45px;
+
+        @include _1300 {
+            flex-wrap: wrap;
+        }
 
         .item {
             display: flex;
@@ -85,6 +94,15 @@ const goToPortfolio = (id) => {
             word-break: break-all;
             transition: all .3s;
             cursor: pointer;
+
+            @include _1300 {
+                max-width: calc(100% / 2 - 25px);
+                width: 100%;
+            }
+            @include _700 {
+                max-width: 100%;
+                width: 100%;
+            }
 
             &:hover {
                 border-color: $primary;
@@ -103,7 +121,7 @@ const goToPortfolio = (id) => {
                 padding: 10px;
                 background-color: #FFFFFF;
                 border-radius: 10px;
-                box-shadow: 0px 0px 6px rgba(61, 61, 61, 0.5);
+                box-shadow: 0 0 6px rgba(61, 61, 61, 0.5);
             }
 
             &-title {

@@ -1,19 +1,21 @@
 <template>
     <div class="about container">
-        <img
-            class="about-img"
-            :src="aboutBlock.img"
-            :alt="aboutBlock.title"
-        >
-        <div class="about-text-content">
-            <h2>{{ aboutBlock.title }}</h2>
-            <p class="about-desc" v-html="aboutBlock.description"></p>
-            <router-link
-                class="about-more"
-                to="/about"
+        <h2>{{ aboutBlock.title }}</h2>
+        <div class="about-content">
+            <img
+                class="about-img"
+                :src="aboutBlock.img"
+                :alt="aboutBlock.title"
             >
-                Узнать подробнее...
-            </router-link>
+            <div class="about-text-content">
+                <p class="about-desc" v-html="aboutBlock.description"></p>
+                <router-link
+                    class="about-more"
+                    to="/about"
+                >
+                    Узнать подробнее...
+                </router-link>
+            </div>
         </div>
     </div>
 </template>
@@ -31,22 +33,61 @@ const aboutBlock = reactive({
 <style scoped lang="scss">
 .about {
     display: flex;
-    align-items: center;
-    justify-content: space-around;
+    flex-direction: column;
     padding: 135px 15px;
+
+    @include _1024 {
+        padding: 30px 15px;
+    }
+
+    h2 {
+        align-self: flex-start;
+        margin-bottom: 32px;
+
+        @include _1024 {
+            align-self: center;
+        }
+    }
+
+    &-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @include _1024 {
+            flex-direction: column;
+            gap: 30px;
+        }
+    }
 
     &-img {
         max-width: 46.5%;
         width: 100%;
         border-radius: 10px;
+
+        @include _1024 {
+            max-width: 60%;
+        }
+
+        @include _700 {
+            max-width: 90%;
+        }
     }
 
     &-text-content {
         display: flex;
         flex-direction: column;
-        max-width: 36.8%;
+        max-width: 45%;
         width: 100%;
         gap: 32px;
+
+        @include _1024 {
+            max-width: 80%;
+        }
+
+        @include _700 {
+            max-width: 100%;
+        }
     }
 
     &-desc {

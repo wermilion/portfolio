@@ -81,6 +81,10 @@ const courses = [
 .usefull-edu {
     padding: 70px 15px 140px;
 
+    @include _1300 {
+        padding: 30px 15px;
+    }
+
     &__header {
         display: flex;
         flex-direction: column;
@@ -112,6 +116,11 @@ const courses = [
         align-items: center;
         justify-content: space-between;
         gap: 5%;
+
+        @include _1300 {
+            flex-direction: column;
+            gap: 20px;
+        }
     }
 
     &__course {
@@ -124,6 +133,10 @@ const courses = [
         border-radius: 10px;
         overflow: hidden;
 
+        @include _1300 {
+            max-width: 100%
+        }
+
         .course {
             &__image {
                 width: 800px;
@@ -133,12 +146,26 @@ const courses = [
                 border-radius: 10px;
                 transform: translate(-50%, 0);
 
+                @include _1300 {
+                    top: -70px;
+                    width: 150%;
+                }
+
+                @include _700 {
+                    top: -20px;
+                    width: 150%;
+                }
+
                 &-wrapper {
                     position: relative;
                     max-width: 100%;
                     width: 100%;
                     height: 400px;
                     overflow: hidden;
+
+                    @include _1300 {
+                        height: 200px;
+                    }
                 }
             }
 
@@ -202,6 +229,10 @@ const courses = [
                 left: 0;
                 top: 50px;
                 transform: rotate(-15deg);
+
+                @include _1300 {
+                    top: 10px;
+                }
             }
         }
 
@@ -211,6 +242,10 @@ const courses = [
                 left: 0;
                 top: 50px;
                 transform: rotate(15deg);
+
+                @include _1300 {
+                    top: 10px;
+                }
             }
         }
     }

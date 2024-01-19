@@ -71,6 +71,9 @@ const goToPortfolio = (id) => {
         gap: 60px;
         padding: 50px 15px;
     }
+    @include _700 {
+        gap: 30px;
+    }
 
     &-list {
         display: flex;

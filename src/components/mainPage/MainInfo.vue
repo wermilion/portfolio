@@ -53,6 +53,12 @@ const changeVisibility = () => {
         display: flex;
         align-items: center;
         padding: 80px 15px;
+
+        @include _1024 {
+            flex-direction: column-reverse;
+            gap: 30px;
+            padding: 30px 15px;
+        }
     }
 
     &__content {
@@ -61,6 +67,10 @@ const changeVisibility = () => {
         max-width: 46%;
         width: 100%;
         gap: 32px;
+
+        @include _1024 {
+            max-width: 100%;
+        }
     }
 
     &__text-content {
@@ -71,6 +81,10 @@ const changeVisibility = () => {
 
         h1 span{
             color: $primary;
+
+            @include _700 {
+                font-size: 50px;
+            }
         }
 
         p {
@@ -83,6 +97,10 @@ const changeVisibility = () => {
 
     button {
         width: fit-content;
+
+        @include _1024 {
+            width: 100%;
+        }
     }
 
     &__img {
@@ -99,6 +117,16 @@ const changeVisibility = () => {
             height: 730px;
             border-radius: 10px;
             overflow: hidden;
+
+            @include _1024 {
+                height: 400px;
+            }
+
+            @include _700 {
+                max-width: 100%;
+                width: 100%;
+                height: 500px;
+            }
         }
     }
 }

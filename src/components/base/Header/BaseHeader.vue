@@ -1,21 +1,20 @@
 <template>
     <header class="header">
-        <div class="container header-items">
-            <nav class="nav">
-                <router-link
-                    v-for="(item, index) in navLinks"
-                    :key="index"
-                    :to="item.path"
-                    :class="['nav-item', {'_active' : item.isActive}]"
-                >
-                    {{ item.label }}
-                </router-link>
-            </nav>
-            <UIButton
-                label="Связаться со мной"
-                class="ghost"
-                @click="changeVisibility"
-            />
+        <div class="container">
+            <div v-if="false" class="header-items">
+                <nav class="nav">
+                    <router-link v-for="(item, index) in navLinks" :key="index" :to="item.path"
+                        :class="['nav-item', { '_active': item.isActive }]">
+                        {{ item.label }}
+                    </router-link>
+                </nav>
+                <UIButton label="Связаться со мной" class="ghost" @click="changeVisibility" />
+            </div>
+            <button @click="changeMenuState" :class="['burger-menu', { 'is-active' : menuIsActive }]">
+                <div class="burger-menu__line first"></div>
+                <div class="burger-menu__line second"></div>
+                <div class="burger-menu__line third"></div>
+            </button>
         </div>
     </header>
 </template>
@@ -23,16 +22,22 @@
 <script setup>
 import { useStore } from 'vuex';
 import { useRoute } from 'vue-router'
-import {onMounted, ref, watch} from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import UIButton from '@/components/ui/Button/UIButton.vue';
+
+const store = useStore();
+const route = useRoute();
 
 const navLinks = ref([
     { path: "/", label: "Главная", isActive: false },
     { path: "/portfolio", label: "Портфолио", isActive: false },
     { path: "/about", label: "Обо мне", isActive: false },
 ])
-const store = useStore();
-const route = useRoute();
+const menuIsActive = ref(false)
+
+const changeMenuState = () => {
+    menuIsActive.value = !menuIsActive.value
+}
 
 const changeVisibility = () => {
     store.commit('MainData/changeModalVisibility')
@@ -86,6 +91,44 @@ watch(route, (to) => {
 
             &._active {
                 color: $primary;
+            }
+        }
+    }
+
+    .burger-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        margin-left: auto;
+        min-height: 15px;
+        height: 16px;
+        width: 20px;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+
+        &__line {
+            width: 100%;
+            border-top: 2px solid $primary;
+        }
+
+        &.is-active {
+            justify-content: center;
+            .first {
+                position: relative;
+                transition: 0.3s ease;
+                transform: rotate(45deg), translateY(2px);
+            }
+
+            .third {
+                position: relative;
+                transition: 0.3s ease;
+                transform: rotate(-45deg);
+            }
+
+            .second {
+                display: none;
             }
         }
     }

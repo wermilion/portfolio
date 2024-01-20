@@ -88,8 +88,6 @@ watch(route, (to) => {
 
         @include _700 {
             flex-direction: column;
-            align-items: start;
-
         }
     }
 
@@ -118,13 +116,8 @@ watch(route, (to) => {
         @include _700 {
             width: 100%;
             padding: 10px 0px;
-            border-top: 2px solid $primary;
             border-radius: 2px;
-
-            &:last-child {
-                border-bottom: 2px solid $primary;
-                margin-bottom: 10px;
-            }
+            text-align: center;
         }
     }
 

@@ -1,16 +1,32 @@
 <template>
     <header class="header">
         <div class="container">
-            <div v-if="false" class="header-items">
+            <div
+                v-show="screenWidth > 1024 || screenWidth <= 1024 && menuIsActive"
+                class="header-items"
+            >
                 <nav class="nav">
-                    <router-link v-for="(item, index) in navLinks" :key="index" :to="item.path"
-                        :class="['nav-item', { '_active': item.isActive }]">
+                    <router-link
+                        v-for="(item, index) in navLinks"
+                        :key="index"
+                        :to="item.path"
+                        :class="['nav-item', { '_active': item.isActive }]"
+                        @click="closeMenu"
+                    >
                         {{ item.label }}
                     </router-link>
                 </nav>
-                <UIButton label="Связаться со мной" class="ghost" @click="changeVisibility" />
+                <UIButton
+                    label="Связаться со мной"
+                    class="ghost"
+                    @click="changeVisibility"
+                />
             </div>
-            <button @click="changeMenuState" :class="['burger-menu', { 'is-active' : menuIsActive }]">
+            <button
+                v-if="screenWidth <= 1024"
+                :class="['burger-menu', { 'is-active' : menuIsActive }]"
+                @click="changeMenuState"
+            >
                 <div class="burger-menu__line first"></div>
                 <div class="burger-menu__line second"></div>
                 <div class="burger-menu__line third"></div>
@@ -24,6 +40,8 @@ import { useStore } from 'vuex';
 import { useRoute } from 'vue-router'
 import { onMounted, ref, watch } from 'vue';
 import UIButton from '@/components/ui/Button/UIButton.vue';
+import {enableScroll} from "../../../utils/scroll/enableScroll";
+import {disableScroll} from "../../../utils/scroll/disableScroll";
 
 const store = useStore();
 const route = useRoute();
@@ -34,17 +52,29 @@ const navLinks = ref([
     { path: "/about", label: "Обо мне", isActive: false },
 ])
 const menuIsActive = ref(false)
+let screenWidth = ref(0)
 
 const changeMenuState = () => {
     menuIsActive.value = !menuIsActive.value
+
+    menuIsActive.value ? disableScroll() : enableScroll()
+}
+
+const closeMenu = () => {
+    menuIsActive.value = false
+    enableScroll()
 }
 
 const changeVisibility = () => {
     store.commit('MainData/changeModalVisibility')
+
+    closeMenu()
 }
 
 // Выполняется при монтировании компонента
 onMounted(() => {
+    screenWidth.value = window.innerWidth
+
     navLinks.value.forEach((el) => {
         el.isActive = el.path === route.path;
     })
@@ -72,11 +102,30 @@ watch(route, (to) => {
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        @include _1024 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            flex-direction: column;
+            justify-content: center;
+            gap: 20px;
+            width: 100vw;
+            height: 100vh;
+            background-color: white;
+            transition: .3s ease;
+        }
     }
 
     .nav {
         display: flex;
         gap: 42px;
+
+        @include _1024 {
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
 
 
         &-item {
@@ -100,35 +149,37 @@ watch(route, (to) => {
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        margin-left: auto;
-        min-height: 15px;
-        height: 16px;
-        width: 20px;
+        width: 30px;
+        height: 48px;
         border: none;
+        padding: 15px 5px;
+        margin-left: auto;
         background: transparent;
         cursor: pointer;
 
         &__line {
             width: 100%;
             border-top: 2px solid $primary;
+            transition: .3s ease;
         }
 
         &.is-active {
-            justify-content: center;
+            transform-origin: 0 100%;
+
             .first {
                 position: relative;
                 transition: 0.3s ease;
-                transform: rotate(45deg), translateY(2px);
+                transform: rotate(45deg) translate(6px, 5px)
             }
 
             .third {
                 position: relative;
                 transition: 0.3s ease;
-                transform: rotate(-45deg);
+                transform: rotate(-45deg) translate(6px, -5px)
             }
 
             .second {
-                display: none;
+                transform: scale(0);
             }
         }
     }

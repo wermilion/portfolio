@@ -116,6 +116,15 @@ const closeModal = () => {
         background-color: white;
         border-radius: 20px;
         z-index: 1001;
+        text-align: center;
+
+        @include _1024 {
+            width: 90%;
+        }
+
+        @include _700 {
+            padding: 15px 30px;
+        }
 
         button.close-modal {
             position: absolute;
@@ -128,6 +137,13 @@ const closeModal = () => {
             cursor: pointer;
             transition: .6s all;
 
+            @include _700 {
+                right: 10px;
+                top: 10px;
+                width: 20px;
+                height: 20px;
+            }
+
             &:hover {
                 transform: rotate(180deg);
             }
@@ -135,6 +151,11 @@ const closeModal = () => {
             svg {
                 width: 32px;
                 height: 32px;
+
+                @include _700 {
+                    width: 20px;
+                    height: 20px;
+                }
 
                 path {
                     fill: $dark-primary-secondary;
@@ -149,8 +170,16 @@ const closeModal = () => {
             width: 100%;
             gap: 20px 0;
 
+            @include _700 {
+                flex-direction: column;
+            }
+
             .input-box {
                 width: 45%;
+
+                @include _700 {
+                    width: 100%;
+                }
             }
 
             .textarea-box {

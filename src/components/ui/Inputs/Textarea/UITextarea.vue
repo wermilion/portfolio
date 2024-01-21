@@ -46,6 +46,7 @@ const change = () => {
         label {
             color: $dark-primary-secondary;
             font-size: 20px;
+            text-align: left;
         }
 
         textarea {

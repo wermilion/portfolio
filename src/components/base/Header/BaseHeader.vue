@@ -52,7 +52,11 @@ const navLinks = ref([
     { path: "/about", label: "Обо мне", isActive: false },
 ])
 const menuIsActive = ref(false)
-let screenWidth = ref(0)
+let screenWidth = ref(window.innerWidth)
+
+const handleResize = () => {
+    screenWidth.value = window.innerWidth
+}
 
 const changeMenuState = () => {
     menuIsActive.value = !menuIsActive.value
@@ -74,10 +78,12 @@ const changeVisibility = () => {
 // Выполняется при монтировании компонента
 onMounted(() => {
     screenWidth.value = window.innerWidth
-
+    
     navLinks.value.forEach((el) => {
         el.isActive = el.path === route.path;
     })
+
+    window.addEventListener('resize', handleResize)
 });
 
 // Следим за изменениями маршрута
